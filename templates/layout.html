@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Report App</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheets/style.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script type="text/javascript">
+  $(function() {
+    $( "#datepick" ).datepicker();   //Calls datepicker calendar features
+  });
+  
+  $(document).on("change", "#datepick", function () {
+	var date = $( "#datepick" ).datepicker( "option", "dateFormat", "yy-mm-dd" ).val();
+	//alert(date);
+	$("#submitdate").submit();
+   });
+   });
+   
+  $(document).ready(function () {
+    $("li.dropdown").hover(
+	 function () {
+     $(this).find('.dropdown-menu').stop(true, true).delay(10).fadeIn(100); 
+    }, 
+     function () {
+     $(this).find('.dropdown-menu').stop(true, true).delay(10).fadeOut(100);
+   }
+   );
+  $('#ss').click(function(){
+        $('#pp').addClass('bdy-img1');
+	});
+	
+	$('#ll').click(function(){
+        $('#pp').addClass('bdy-img2');
+    });
+});
+</script>
+</head>
+<body>
+
+<header>
+    <div class="container">
+		<h1 class="logo">EMEA CRM</h1>
+		<h1 class="logo"><a href="http://cssc.herokuapp.com">EMEA CRM</a></h1>
+    </div>
+</header>
+  
+<nav class="navbar navbar-default" style="  background-color: white;  border-color: white">
+         <div class="container-fluid">
+		   <div class="navbar-header">
+		 </div>
+<div>
+	 <ul class="nav navbar-nav" style = "margin-left: 24%;font-weight: bold;font-size: 18px;">
+	 <li class="dropdown">
+			<a class="dropdown-toggle m_clor" data-toggle="dropdown" href="#">Daily Count </span></a>
+			<ul class="dropdown-menu">
+			<li><a href="#" id="">May 11th</a></li>
+			<li><a href="#">May 10th</a></li>
+			<li><a href="#">May 9th</a></li>
+			<li><a href="#" id="">May 8th</a></li>
+     </ul>
+     </li>
+     <li class="dropdown">
+		<a class="dropdown-toggle m_clor" data-toggle="dropdown" href="#">Weekly Count </span></a>
+		<ul class="dropdown-menu">
+        <li><a href="#">Week 31</a></li>
+        <li><a href="#">Week 30</a></li>
+        <li><a href="#">Week 29</a></li>                        
+		</ul>
+     </li>
+        <li><a href="#" class="m_clor" id="ss">Monthly Count</a></li>
+        <li><a href="#" class="m_clor" id="ll">Graphical Analysis</a></li>
+      </ul>
+</div>
+	<!--Date Selection box-->
+	
+	<form id="submitdate" name="submitdate" action="/date" method="POST">
+		<p ><b>Date:</b> <input type="text" id="datepick" name="datepick" placeholder="Select Date" class=" form-control" style="width:9% ; margin-top: -2%;
+		margin-left: 4%;color:rgb(31, 26, 223);"></p>
+	</form>
+</nav>
+	<!--Count, TAT, Trend buttons-->
+<div class="btn-group order_buttons" data-toggle="buttons-radio" style="float:right">
+	<p><button onclick="location.href='/radio'" type="button" class="btn btn-info" id="bcount">Count</button></p>
+	<p><button type="button" class="btn btn-info">TAT</button></p>
+	<p><button type="button" class="btn btn-info" >Trend</button></p>
+</div>
+	
+<div class="container" style="color: black;font-size: 17px;">
+	<!--external content is rendered here-->
+      {% block content %}
+	  {% endblock %}
+   
+</div>
+</body>
+</html>

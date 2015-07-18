@@ -1,0 +1,31 @@
+CREATE TABLE OE_TAT(
+	Document varchar(50) NULL,
+	Time_IST timestamp NULL,
+	Received timestamp NULL,
+	Received_TAT timestamp NULL,
+	Diff float NULL,
+	TAT varchar(13) NOT NULL,
+	Region_CSSC varchar(255) NULL,
+	Calendar_Week float NULL,
+	Day float NULL,
+	Calendar_Quarter varchar(255) NULL,
+	Calendar_Year float NULL,
+	Calendar_Month varchar(255) NULL,
+	Fiscal_Quarter varchar(255) NULL,
+	Fiscal_Year float NULL,
+	Fiscal_Week float NULL,
+	Fiscal_Month float NULL,
+	Name varchar(255) NULL,
+	Subject varchar(255) NULL,
+	From_email varchar(255) NULL,
+	Contents varchar(4000) NULL,
+	Created timestamp NULL,
+	Modified timestamp NULL,
+	SO_Number varchar(255) NULL,
+	Sender_Name varchar(255) NULL,
+	Order_Type varchar(5) NULL,
+	SaTy varchar(50) NULL,
+	Sales_Office varchar(50) NULL
+)
+
+COPY OE_TAT FROM 'C:\Users\TE236863\Desktop\App\OE_TAT.csv' DELIMITER ',' CSV;
